@@ -4,7 +4,6 @@ import pymysql
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-
 pymysql.install_as_MySQLdb()  # ModuleNotFoundError: No module named 'MySQLdb'
 app = Flask(__name__)
 
@@ -25,5 +24,5 @@ def hello_world():  # put application's code here
 if __name__ == '__main__':
     from controller.user import *
 
-    app.register_blueprint(user)
+    app.register_blueprint(user, url_prefix='/api')
     app.run(debug=True, host='127.0.0.1', port=5000)
